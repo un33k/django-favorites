@@ -53,7 +53,7 @@ class FavoriteManager(models.Manager):
         return favorite
 
 class Favorite(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name="%(class)s", null=False)    
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
